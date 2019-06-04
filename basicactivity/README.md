@@ -1,7 +1,9 @@
-This labrary is developed to make a android project found upon the BasicActivity as parent.
+<p>This labrary is developed to make a android project found upon the BasicActivity as parent.
 The BasicActivity has the functions of set action bar,check permission and request permission and so on. 
+</pre>
 
 If you are build a bebug project,you can use the default action bar that I have given at 'MyActionBarActivity.java'.
+The method is <a href="src/main/java/com/hlm/basic/activity/MyActionBarActivity.java#L22">setMyActionBar()</a>
 Of course,you can create your favour actiion bar as a 'View' and load it to the 'setMyActionBar(View bar)' method,
 and it will be current activity's action bar.(The 'View' is better as a 'LinearLayout' and its orientation="horizontal") 
 Another function is to set the activity's title by 'setTitle(String title)',you can also use 'setMyActionBar(String title)' 
