@@ -10,6 +10,8 @@ You can 'setHelpListener(String help)' to give the help button on right side act
 to users.And 'setDefaultHelp(String help)' method is to define the default help content,which can be show all over the application's 
 activity if the activity set help content as null or "".
 
+<img src=".../img/09cade7c43093efae653a0c13577095.jpg"/>
+
 If your project's max sdk version,that means you need to dynamicly request permissions for you application.
 This is a complex step for developer,but now you can use the 'MyPermissionActivity' to use correspondent api to resolve 
 the request permissions.Such one function as the following code:
