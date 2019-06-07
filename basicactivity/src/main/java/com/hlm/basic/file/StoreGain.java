@@ -290,6 +290,7 @@ public class StoreGain {
     private void store(String content) {
         storeFile(content);
     }
+
     ;
 
     private void storeNext(String content) {

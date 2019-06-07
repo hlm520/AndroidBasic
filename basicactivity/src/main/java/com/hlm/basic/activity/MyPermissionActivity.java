@@ -17,6 +17,11 @@ public class MyPermissionActivity extends MyActionBarActivity {
     private static String[] mNeverRequest;
     private static Runnable mRunnable = null;
 
+    /**
+     * request any number of permissions disposable
+     *
+     * @param permissions what permissions want to be requested
+     */
     protected void request(String... permissions) {
         synchronized (this) {
             mNeverRequest = new String[permissions.length];
@@ -35,11 +40,24 @@ public class MyPermissionActivity extends MyActionBarActivity {
         }
     }
 
+    /**
+     * if permission hasn't requested,to request and if success,invoke the runnable.run();
+     * {@link Runnable#run()}
+     *
+     * @param runnable task to do after request success
+     * @param permission which permission want to request
+     */
     protected void request(Runnable runnable, String permission) {
-        this.mRunnable = runnable;
+        mRunnable = runnable;
         request(permission);
     }
 
+    /**
+     * to concert the permission is having permissiveness
+     *
+     * @param permission which permission want to request
+     * @return true:has permissiveness,otherwise,hasn't permissiveness
+     */
     protected boolean isRequested(String permission) {
         return ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED;
     }
@@ -76,10 +94,16 @@ public class MyPermissionActivity extends MyActionBarActivity {
         }
     }
 
+    /**
+     * apply by user is wrong
+     * whether or not to request in system setting intent by user
+     *
+     * @param permission the permission request failed
+     */
     private void dialog(String permission) {
         AlertDialog.Builder normalDialog = new AlertDialog.Builder(this);
         normalDialog.setTitle("权限申请");
-        normalDialog.setMessage("应用未授予" + new Entity().getName(permission) + "权限,需要在设置界面手动授权！");
+        normalDialog.setMessage("应用未授予" + Entity.getName(permission) + "权限,需要在设置界面手动授权！");
         normalDialog.setPositiveButton("设置",
                 new DialogInterface.OnClickListener() {
                     @Override
@@ -94,10 +118,13 @@ public class MyPermissionActivity extends MyActionBarActivity {
                         finish();
                     }
                 });
-        // 显示
+        // show
         normalDialog.show();
     }
 
+    /**
+     * open the system setting intent
+     */
     private void toSetting() {
         Uri packageURI = Uri.parse("package:" + getPackageName());
         Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageURI);
